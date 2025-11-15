@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="24dp"
+    tools:context=".ui.animais.AdicionarAnimalFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal">
+
+        <TextView
+            android:text="Adicionar Animal"
+            android:textStyle="bold"
+            android:textSize="22sp"
+            android:layout_marginBottom="24dp"
+            android:textColor="@color/black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <!-- Placeholder visual (formulário futuro) -->
+        <TextView
+            android:text="Aqui será o formulário de registo de animal."
+            android:textSize="16sp"
+            android:textColor="@color/black"
+            android:layout_marginBottom="32dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/btnUploadImagem"
+            android:text="Carregar Imagem"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:backgroundTint="@color/purple_200"
+            android:textColor="@android:color/white" />
+
+        <Button
+            android:id="@+id/btnGuardarAnimal"
+            android:text="Guardar Animal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/purple_200"
+            android:textColor="@android:color/white" />
+
+    </LinearLayout>
+</ScrollView>

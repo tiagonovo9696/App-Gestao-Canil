@@ -1,9 +1,11 @@
 package com.canil.gestorcanil.ui
 
+import android.app.AlertDialog // <-- IMPORT QUE FALTAVA
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -42,12 +44,38 @@ class AgendamentosFragment : Fragment() {
                     Toast.LENGTH_SHORT
                 ).show()
             },
-            onMensagem = {
-                Toast.makeText(
-                    requireContext(),
-                    "Mensagem a: ${it.cliente}",
-                    Toast.LENGTH_SHORT
-                ).show()
+            onMensagem = { agendamento ->
+                val input = EditText(requireContext()).apply {
+                    hint = "Escreve a mensagem para ${agendamento.cliente}..."
+                    setSingleLine(false)
+                    maxLines = 4
+                }
+
+                val dialog = AlertDialog.Builder(requireContext())
+                    .setTitle("Enviar Mensagem")
+                    .setView(input)
+                    .setPositiveButton("Enviar") { _, _ ->
+                        val mensagem = input.text.toString().trim()
+                        if (mensagem.isNotEmpty()) {
+                            Toast.makeText(
+                                requireContext(),
+                                "Mensagem enviada para ${agendamento.cliente}: $mensagem",
+                                Toast.LENGTH_LONG
+                            ).show()
+                        } else {
+                            Toast.makeText(
+                                requireContext(),
+                                "A mensagem está vazia!",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
+                    }
+                    .setNegativeButton("Cancelar") { dialogInterface, _ ->
+                        dialogInterface.dismiss()
+                    }
+                    .create()
+
+                dialog.show()
             }
         )
 
